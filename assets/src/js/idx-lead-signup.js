@@ -1,3 +1,9 @@
+var ImpressRecaptchaCallback = function() {
+    jQuery('.impress-lead-signup .g-recaptcha').each(function(index, el) {
+      grecaptcha.render(el, {'sitekey' : ImpressRecaptchaKey});
+    });
+};
+
 document.addEventListener('DOMContentLoaded', function(){
 
     //Helper function.
@@ -94,3 +100,5 @@ document.addEventListener('DOMContentLoaded', function(){
     //Listen for more errors on submit of forms.
     listenToSignupForms();
 });
+
+

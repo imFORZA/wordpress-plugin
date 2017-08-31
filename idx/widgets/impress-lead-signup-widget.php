@@ -75,11 +75,13 @@ class Impress_Lead_Signup_Widget extends \WP_Widget
         $wpl_options = get_option('plugin_wp_listings_settings');
 
         //Validate fields
-        wp_register_script('impress-lead-signup', plugins_url('../assets/js/idx-lead-signup.min.js', dirname(__FILE__)));
+        wp_register_script('impress-lead-signup', plugins_url('../assets/js/idx-lead-signup.min.js', dirname(__FILE__)), array('jquery'));
         wp_localize_script('impress-lead-signup', 'idxLeadLoginUrl', $this->lead_login_page());
         wp_enqueue_script('impress-lead-signup');
-        if( $wpl_options['wp_listings_captcha_site_key'] != '' || get_option( 'idx_recaptcha_site_key') != '' ) {
-            wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js');
+        if( $wpl_options['wp_listings_captcha_site_key'] != '' || get_option( 'idx_recaptcha_site_key' ) != '' ) {
+            $captcha_key = ( $wpl_options['wp_listings_captcha_site_key'] != '' ) ? $wpl_options['wp_listings_captcha_site_key'] : get_option( 'idx_recaptcha_site_key' );
+            wp_enqueue_script( 'google-recaptcha', 'https://www.google.com/recaptcha/api.js?onload=ImpressRecaptchaCallback&render=explicit' );
+            wp_localize_script( 'impress-lead-signup', 'ImpressRecaptchaKey', $captcha_key );
         }
 
         echo $before_widget;
