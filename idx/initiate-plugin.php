@@ -40,6 +40,7 @@ class Initiate_Plugin
 
     public function instantiate_classes()
     {
+        new Dynamic\IDX_Dynamic_Page();
         new Wrappers();
         new Idx_Pages();
         new Widgets\Create_Idx_Widgets();
