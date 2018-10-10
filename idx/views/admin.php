@@ -70,20 +70,14 @@ if ($api_error) {
                 <div id="refresh-cron-schedule" class="inlineBlock">
 	                <h3>Background Cron:</h3>
 	                <p>Choose how often the background refresh runs:</p>
-	                <?php $schedules = wp_get_schedules();
-		                 var_dump($schedules);
-		                  ?>
+	                <?php $schedules = wp_get_schedules(); ?>
 	                <select>
 	                <?php
-		                $schedules = wp_get_schedules();
-		                
-		              
 		                foreach($schedules as $schedule ) {
-			                echo '<option value=""></option>';
+			                var_dump($schedule);
+			                echo '<option value="">'. $schedule['display'] .'</option>';
 		                }
 		                ?>
-	                
-	                
 		                <option value="">Disabled</option>
 	                </select>
                 </div>
