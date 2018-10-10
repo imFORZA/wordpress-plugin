@@ -71,7 +71,7 @@ if ($api_error) {
 	                <h3>Background Cron:</h3>
 	                <p>Choose how often the background refresh runs:</p>
 	                <?php $schedules = wp_get_schedules(); ?>
-	                <select>
+	                <select id="idx-cron-schedule" name="idx-cron-schedule">
 	                <?php
 		                foreach($schedules as $schedule_name => $schedule ) {
 			                echo '<option value="'.$schedule_name .'">'. $schedule['display'] .'</option>';
