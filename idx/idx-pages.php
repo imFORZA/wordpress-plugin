@@ -48,10 +48,10 @@ class Idx_Pages
     {
         
         if (!wp_next_scheduled('idx_create_idx_pages')) {
-           wp_schedule_event(time(), 'threeminutes', 'idx_create_idx_pages');
+           wp_schedule_event( time(), apply_filters( 'idx_custom_schedule_filter', 'threeminutes' ), 'idx_create_idx_pages');
         }
         if(!wp_next_scheduled('idx_delete_idx_pages')) {
-           wp_schedule_event(time(), 'threeminutes', 'idx_delete_idx_pages');
+           wp_schedule_event(time(), apply_filters( 'idx_custom_schedule_filter', 'threeminutes' ), 'idx_delete_idx_pages');
         }
     }
 
