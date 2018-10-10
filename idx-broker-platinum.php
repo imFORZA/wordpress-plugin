@@ -3,7 +3,7 @@
 Plugin Name: IMPress for IDX Broker
 Plugin URI: http://www.idxbroker.com
 Description: Over 600 IDX/MLS feeds serviced. The #1 IDX/MLS solution just got even better!
-Version: 2.5.0
+Version: 2.5.1
 Author: IDX Broker
 Contributors: IDX, LLC
 Author URI: http://www.idxbroker.com/
@@ -15,11 +15,21 @@ License: GPLv2 or later
 // error_reporting(E_ALL);
 
 new Idx_Broker_Plugin();
-class Idx_Broker_Plugin
-{
-    //placed here for convenient updating
-    const IDX_WP_PLUGIN_VERSION = '2.5.0';
 
+/**
+ * Idx_Broker_Plugin class.
+ */
+class Idx_Broker_Plugin {
+	
+    // Set IDX Broker Plugin Version.
+    const IDX_WP_PLUGIN_VERSION = '2.5.1';
+	
+    /**
+     * __construct function.
+     * 
+     * @access public
+     * @return void
+     */
     public function __construct()
     {
         define( 'IMPRESS_IDX_URL', plugin_dir_url( __FILE__ ) );
@@ -51,7 +61,14 @@ class Idx_Broker_Plugin
             return true;
         }
     }
-
+	
+    /**
+     * incompatible_message function.
+     * 
+     * @access public
+     * @static
+     * @return void
+     */
     public static function incompatible_message()
     {
         echo "<div class=\"error\"><br><div>You are using a deprecated version
@@ -66,12 +83,26 @@ class Idx_Broker_Plugin
             target=\"_blank\">supported versions page.</a>
             </div><br></div>";
     }
-
+	
+    /**
+     * idx_deactivate_plugin function.
+     * 
+     * @access public
+     * @static
+     * @return void
+     */
     public static function idx_deactivate_plugin()
     {
         deactivate_plugins(plugin_basename(__FILE__));
     }
-
+	
+    /**
+     * idx_activate function.
+     * 
+     * @access public
+     * @static
+     * @return void
+     */
     public static function idx_activate()
     {
         if (!get_option('idx_results_url')) {
@@ -94,7 +125,14 @@ class Idx_Broker_Plugin
         flush_rewrite_rules();
     } // end idx_activate fn
 
-    //deactivate hook
+    
+    /**
+     * Deactivation Hook.
+     * 
+     * @access public
+     * @static
+     * @return void
+     */
     public static function idx_deactivate()
     {
         //disable scheduled update for omnibar

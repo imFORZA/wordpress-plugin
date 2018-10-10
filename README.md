@@ -116,6 +116,9 @@ This plugin requires a PHP version higher than 5.4. For security reasons, we rec
 
 ## Changelog ##
 
+### 2.5.1 ###
+* New: Option to set how often the background refresh cron runs.
+
 ### 2.5.0 ###
 * New: Display saved links in property showcase and carousel widgets and shortcodes!
 * Fix: City links widget with property count uses single API call per MLS to get count.
