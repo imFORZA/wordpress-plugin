@@ -19,6 +19,9 @@ class Idx_Pages
         //deletes all IDX pages for troubleshooting purposes
         // $this->delete_all_idx_pages();
         add_option('idx_cron_schedule', 'threeminutes');
+				register_setting( 'idx-platinum-settings-group', 'idx_cron_schedule' );
+
+				
         add_action('admin_init', array($this, 'show_idx_pages_metabox_by_default'));
         add_filter('post_type_link', array($this, 'post_type_link_filter_func'), 10, 2);
         add_filter('cron_schedules', array($this, 'add_custom_schedule'));
