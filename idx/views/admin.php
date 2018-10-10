@@ -67,6 +67,26 @@ if ($api_error) {
 ?>
                     </div>
                 </div>
+                <div id="refresh-cron-schedule" class="inlineBlock">
+	                <h3>Background Cron:</h3>
+	                <p>Choose how often the background refresh runs:</p>
+	                <?php $schedules = wp_get_schedules();
+		                 var_dump($schedules);
+		                  ?>
+	                <select>
+	                <?php
+		                $schedules = wp_get_schedules();
+		                
+		              
+		                foreach($schedules as $schedule ) {
+			                echo '<option value=""></option>';
+		                }
+		                ?>
+	                
+	                
+		                <option value="">Disabled</option>
+	                </select>
+                </div>
                 <!-- dynamic wrapper page -->
                 <div id="dynamic_page">
                     <h3>Create the Global Wrapper<a href="http://support.idxbroker.com/customer/en/portal/articles/1919274-automatically-create-wordpress-dynamic-wrapper" target="_blank"><img class="help-icon" src="<?php echo plugins_url('../../assets/images/helpIcon.svg', __FILE__);?>" alt="help"></a></h3>
