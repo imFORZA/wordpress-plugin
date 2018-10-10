@@ -19,6 +19,8 @@ function idx_delete_plugin_data() {
 	$wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->options WHERE option_name LIKE %s", '%idx_omnibar%' ) );
 	// Delete middleware widgets.
 	$wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->options WHERE option_name LIKE %s", '%widget_idx%' ) );
+	// Delete Cron Option.
+	$wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->options WHERE option_name LIKE %s", '%idx_cron_schedule%' ) );
 	// Delete dismissed notices.
 	$wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->options WHERE option_name LIKE %s", '%idx-notice-dismissed%' ) );
 	// Delete any other idx_ prefixed options. *Excludes API key
