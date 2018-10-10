@@ -73,12 +73,11 @@ if ($api_error) {
 	                <?php $schedules = wp_get_schedules(); ?>
 	                <select>
 	                <?php
-		                foreach($schedules as $schedule ) {
-			                var_dump($schedule);
-			                echo '<option value="">'. $schedule['display'] .'</option>';
+		                foreach($schedules as $schedule_name => $schedule ) {
+			                echo '<option value="'.$schedule_name .'">'. $schedule['display'] .'</option>';
 		                }
 		                ?>
-		                <option value="">Disabled</option>
+		                <option value="disabled">Disabled</option>
 	                </select>
                 </div>
                 <!-- dynamic wrapper page -->
